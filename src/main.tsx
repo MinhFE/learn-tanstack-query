@@ -6,6 +6,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import App from './App';
 import ProfilePage from './pages/profile';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Transaction from './pages/transaction';
 
 const queryClient = new QueryClient();
 
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
       {
         path: 'profile',
         element: <ProfilePage />,
+      },
+      {
+        path: 'transaction',
+        element: <Transaction />,
       },
     ],
   },

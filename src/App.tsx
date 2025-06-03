@@ -10,6 +10,10 @@ function App() {
       url: '/profile',
       label: 'Profile',
     },
+    {
+      url: '/transaction',
+      label: 'Transaction',
+    },
   ];
 
   return (
