@@ -1,22 +1,37 @@
-import { useProfile } from './hooks';
+import { NavLink, Outlet } from 'react-router-dom';
 
 function App() {
-  const { data, isLoading, error } = useProfile();
-
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error.message}</div>;
-  if (!data) return <div>No profile data</div>;
+  const paths = [
+    {
+      url: '/',
+      label: 'Home',
+    },
+    {
+      url: '/profile',
+      label: 'Profile',
+    },
+  ];
 
   return (
     <div>
-      <h1>Profile</h1>
-      <p>
-        <strong>Name:</strong> {data.name}
-      </p>
-      <p>
-        <strong>Email:</strong> {data.email}
-      </p>
-      {/* Add more fields as needed */}
+      <h1>My app</h1>
+      <ul>
+        {paths.map((path) => (
+          <li key={path.url}>
+            <NavLink
+              to={path.url}
+              style={({ isActive }) => ({
+                color: isActive ? 'blue' : 'black',
+                textDecoration: 'none',
+              })}
+            >
+              {path.label}
+            </NavLink>
+          </li>
+        ))}
+      </ul>
+
+      <Outlet />
     </div>
   );
 }
